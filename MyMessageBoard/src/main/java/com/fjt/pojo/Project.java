@@ -1,5 +1,7 @@
 package com.fjt.pojo;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +20,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "projects")
 @SequenceGenerator(name = "seq_project", sequenceName = "seq_project", allocationSize = 1)
-public class Project {
+public class Project implements Serializable {
+
+	/**
+	 * @Fields field:field:{todo}(用一句话描述这个变量表示什么)
+	 */
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_project")

@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fjt.pojo.User;
 
-public interface UserService {
+public interface UserService extends BaseService {
 
 	/**
 	 * 	

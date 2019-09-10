@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
 </head>
 
 <body>
@@ -19,8 +20,8 @@ String lastime=(String)request.getAttribute("lastTime");
 <div class="usermanage">用户管理</div><br/>
 <div class="rolemanage">角色管理</div><br/>
 <div class="projMange">项目管理</div><br/>
-<div class="emplyManage">雇员管理</div><br/>
-<div class="##">任务管理</div><br/>
+<div class="messageBord">留言板管</div><br/>
+<div class="##">雇员管理</div><br/>
 <div class="##">修改密码</div><br/> 
 <a href="retnLongin">安全退出</a><br/>
 </body>

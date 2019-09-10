@@ -17,8 +17,9 @@ import com.fjt.pojo.User;
 import com.fjt.service.UserService;
 import com.fjt.util.UserReporUp;
 
+//这是一个业务层的类，完成对user domain对象的各种操作
 @Service
-public class UserSeviceImpl implements UserService {
+public class UserSeviceImpl extends BaseSericeImpl implements UserService {
 
 	@Autowired
 	private UserBiz userBiz;

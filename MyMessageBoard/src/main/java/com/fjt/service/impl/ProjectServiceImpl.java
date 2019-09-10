@@ -16,7 +16,8 @@ import com.fjt.service.ProjectService;
 import com.fjt.util.ProjectRrepUP;
 
 @Service
-public class ProjectServiceImpl implements ProjectService {
+public class ProjectServiceImpl extends BaseSericeImpl
+		implements ProjectService {
 
 	@Autowired
 	private ProjctBiz projctBiz;

@@ -18,6 +18,6 @@ package com.fjt.service;
  *
  */
 
-public interface UserRoleService {
+public interface UserRoleService extends BaseService {
 
 }

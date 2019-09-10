@@ -5,6 +5,7 @@
 <head>
 <script type="text/javascript" src="../js/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="../js/emplyeInfo.js"></script>
+<script type="text/javascript" src="../js/base.js"></script>
 <script type="text/javascript">
 function isXlm(){
    var fileName=$("input[name='file']").val();

@@ -1,7 +1,4 @@
-var base={
-		domain:window.location.protocol + "//" + window.location.host
-		+"/MyUserManage/"
-}
+
 var pageNow=1;
 var pageCount=3;
 $(document).ready(function(){

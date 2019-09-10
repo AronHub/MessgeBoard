@@ -262,15 +262,21 @@ public class UserControl {
 	@ResponseBody
 	public String delete(HttpServletRequest request) {
 		String userID = request.getParameter("id");
-		//删除一个
-		if (!userID.contains(",")) {
-			userservice.delet(Integer.parseInt(userID));
-		} else {
-			//删除多个
-			String idArray[] = userID.split(",");
-			for (String id : idArray) {
-				userservice.delet(Integer.parseInt(id));
+		try {
+			//删除一个
+			if (!userID.contains(",")) {
+				userservice.delet(Integer.parseInt(userID));
+			} else {
+				//删除多个
+				String idArray[] = userID.split(",");
+				for (String id : idArray) {
+					userservice.delet(Integer.parseInt(id));
+				}
 			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("删除出错!", e.getMessage());
+			return "error";
 		}
 
 		return "success";
@@ -300,14 +306,23 @@ public class UserControl {
 	//修改操作
 	@RequestMapping("updat")
 	@ResponseBody
-	public void updat(User user) {
-		User usr = userservice.finOne(user.getId());
-		usr.setId(user.getId());
-		usr.setAddr(user.getAddr());
-		usr.setName(user.getName());
-		usr.setPssword(user.getPssword());
-		usr.setTelep(user.getTelep());
-		userservice.save(usr);
+	public String updat(User user) {
+		try {
+			User usr = userservice.finOne(user.getId());
+			usr.setId(user.getId());
+			usr.setAddr(user.getAddr());
+			usr.setName(user.getName());
+			usr.setPssword(user.getPssword());
+			usr.setTelep(user.getTelep());
+			userservice.save(usr);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("修改出错!", e.getMessage());
+			return "error";
+		}
+		return "success";
+
 	}
 
 	/**

@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fjt.pojo.Role;
 
-public interface RoleService {
+public interface RoleService extends BaseService {
 	/**
 	 *
 	     * @Title:  报表上传

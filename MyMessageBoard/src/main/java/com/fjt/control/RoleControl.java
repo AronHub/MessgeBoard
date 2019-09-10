@@ -211,7 +211,14 @@ public class RoleControl {
 	@RequestMapping("addRole")
 	@ResponseBody
 	public String addRole(Role role) {
-		roleService.add(role);
+		try {
+			roleService.add(role);
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("新增出错!", e.getMessage());
+			return "error";
+		}
 		return "success";
 
 	}
@@ -230,14 +237,20 @@ public class RoleControl {
 	@ResponseBody
 	public String deleteRole(HttpServletRequest request) {
 		String rid = request.getParameter("id");
-		//一个记录
-		if (!rid.contains(",")) {
-			roleService.deltRole(Integer.parseInt(rid));
-		} else {
-			//多条记录
-			for (String id : rid.split(",")) {
-				roleService.deltRole(Integer.parseInt(id));
+		try {
+			//一个记录
+			if (!rid.contains(",")) {
+				roleService.deltRole(Integer.parseInt(rid));
+			} else {
+				//多条记录
+				for (String id : rid.split(",")) {
+					roleService.deltRole(Integer.parseInt(id));
+				}
 			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			logger.error("删除出错!", e.getMessage());
+			return "error";
 		}
 
 		return "success";

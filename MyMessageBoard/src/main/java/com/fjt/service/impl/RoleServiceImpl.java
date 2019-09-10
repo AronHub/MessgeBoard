@@ -18,7 +18,7 @@ import com.fjt.service.RoleService;
 import com.fjt.util.ReporUp;
 
 @Service
-public class RoleServiceImpl implements RoleService {
+public class RoleServiceImpl extends BaseSericeImpl implements RoleService {
 
 	@Autowired
 	private RoleBiz roleBiz;

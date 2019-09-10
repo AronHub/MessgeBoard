@@ -23,6 +23,7 @@ import com.fjt.service.UserRoleService;
      */
 
 @Service
-public class UserRoleServiceImpl implements UserRoleService {
+public class UserRoleServiceImpl extends BaseSericeImpl
+		implements UserRoleService {
 
 }

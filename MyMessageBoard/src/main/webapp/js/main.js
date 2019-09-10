@@ -1,8 +1,4 @@
-var base = {
-	domain : window.location.protocol + "//" + window.location.host
-			+"/MyUserManage/"
-	
-};
+
 $(document).ready(function(){
 	//访问用户管理界面 
 	$(".usermanage").click(function(){
@@ -21,6 +17,11 @@ $(document).ready(function(){
 	$(".projMange").click(function(){
 		window.location.href=base.domain+"projeView/GoProjctView";
 		
+	})
+	
+	//访问留言板界面
+	$(".messageBord").click(function(){
+		window.location.href=base.domain+"message/showMessageView";
 	})
 	
 

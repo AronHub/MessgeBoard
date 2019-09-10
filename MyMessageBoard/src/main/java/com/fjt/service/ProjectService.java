@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fjt.pojo.Project;
 
-public interface ProjectService {
+public interface ProjectService extends BaseService {
 
 	/**
 	 * 

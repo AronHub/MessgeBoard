@@ -13,7 +13,7 @@ package com.fjt.repositery.impl;
 import com.fjt.repositery.custom.UserRoleRepoCustom;
 
 /**
-     * @ClassName: UserRoleRepoImpl
+     * @ClassName: 这是一个Dao层
      * @Description: TODO(这里用一句话描述这个类的作用)
      * @author fujiantao
      * @date 2019年8月19日

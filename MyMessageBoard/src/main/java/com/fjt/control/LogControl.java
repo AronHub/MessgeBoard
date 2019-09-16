@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fjt.pojo.User;
 import com.fjt.service.UserService;
+import com.fjt.util.Md5Tool;
 
 /**
  * 
@@ -65,7 +66,7 @@ public class LogControl {
 		String username = map.get("user");
 		String password = map.get("password");
 		String isKeep = map.get("keepName");
-
+		password = Md5Tool.MD5(password);
 		User user = userService.findUser(username, password);
 		try {
 			if (user == null) {

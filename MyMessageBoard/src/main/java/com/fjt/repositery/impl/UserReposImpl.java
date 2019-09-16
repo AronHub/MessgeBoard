@@ -18,6 +18,7 @@ import com.fjt.repositery.custom.PageCustom;
 import com.fjt.repositery.custom.UserReporsCustom;
 
 /**
+ * 这是一个Dao层
  * 这边是自定义接口的实现类，这边主要实现类的名称（前缀是：UserRepos）
  * @author fujiantao
  *

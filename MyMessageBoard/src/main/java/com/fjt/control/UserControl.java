@@ -31,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.fjt.pojo.User;
 import com.fjt.service.UserService;
+import com.fjt.util.Md5Tool;
 import com.fjt.util.PageUtil;
 
 /**
@@ -237,7 +238,11 @@ public class UserControl {
 				address = new String(user.getAddr().getBytes("ISO-8859-1"),
 						"utf-8");
 			}
+
 			user.setAddr(address);
+			//密码用md5进行加密保存
+			String passwd = Md5Tool.MD5(user.getPssword());
+			user.setPssword(passwd);
 			userservice.save(user);
 			return "success";
 		} catch (Exception e) {

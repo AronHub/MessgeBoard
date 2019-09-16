@@ -16,6 +16,14 @@ import com.fjt.bussiness.ProjctBiz;
 import com.fjt.pojo.Project;
 import com.fjt.repositery.custom.ProjRrepCustom;
 
+/**
+ * 
+     * @ClassName: 这是一个Dao层
+     * @Description: TODO(这里用一句话描述这个类的作用)
+     * @author fujiantao
+     * @date 2019年9月10日
+     *
+ */
 public class ProjRrepImpl implements ProjRrepCustom {
 
 	@PersistenceContext

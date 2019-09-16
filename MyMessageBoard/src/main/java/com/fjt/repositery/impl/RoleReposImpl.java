@@ -16,6 +16,14 @@ import com.fjt.pojo.Role;
 import com.fjt.repositery.custom.RolereportCustom;
 import com.fjt.service.RoleService;
 
+/**
+ * 
+     * @ClassName: 这是一个Dao层
+     * @Description: TODO(这里用一句话描述这个类的作用)
+     * @author fujiantao
+     * @date 2019年9月10日
+     *
+ */
 public class RoleReposImpl implements RolereportCustom {
 
 	@PersistenceContext

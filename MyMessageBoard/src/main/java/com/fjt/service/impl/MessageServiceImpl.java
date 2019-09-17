@@ -15,7 +15,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fjt.bussiness.MessageBiz;
+import com.fjt.dao.MessageRepo;
 import com.fjt.pojo.Message;
 import com.fjt.service.MessageService;
 
@@ -31,7 +31,7 @@ public class MessageServiceImpl extends BaseSericeImpl
 		implements MessageService {
 
 	@Autowired
-	private MessageBiz messageBiz;
+	private MessageRepo messageRepo;
 
 	/* (非 Javadoc)
 	 * 
@@ -43,7 +43,7 @@ public class MessageServiceImpl extends BaseSericeImpl
 	@Override
 	public List<Message> showMessage() {
 		// TODO Auto-generated method stub
-		return messageBiz.showMessage();
+		return messageRepo.showMessage();
 	}
 
 	/* (非 Javadoc)
@@ -56,7 +56,7 @@ public class MessageServiceImpl extends BaseSericeImpl
 	@Override
 	public void saveMessage(Message message) {
 		// TODO Auto-generated method stub
-		messageBiz.saveMessage(message);
+		messageRepo.save(message);
 	}
 
 }

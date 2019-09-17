@@ -65,36 +65,30 @@ public class LogControl {
 		//如果前端是以表单的形式发送的请求，那么这边的参数名称就是表单中的name名称
 		String username = map.get("user");
 		String password = map.get("password");
+		//是否勾选了保存用户名
 		String isKeep = map.get("keepName");
 		password = Md5Tool.MD5(password);
 		User user = userService.findUser(username, password);
 		try {
+			//使用cookie保存用户名
+			if ("keep".equals(isKeep)) {
+				//创建cookie.
+				Cookie cookie = new Cookie("userName", username);
+				//设置生命周期
+				cookie.setMaxAge(3600 * 24 * 2 * 7);
+				//下面代码会 回送到浏览器，并且把cookie存放在浏览器的临时文件夹
+				response.addCookie(cookie);
+			}
 			if (user == null) {
 				request.setAttribute("err", "用户名或密码不正确!");
-				//使用cookie保存用户名
-				if ("keep".equals(isKeep)) {
-					//创建cookie.
-					Cookie cookie = new Cookie("userName", user.getName());
-					//设置生命周期
-					cookie.setMaxAge(3600 * 24 * 2 * 7);
-					//下面代码会 回送到浏览器，并且把cookie存放在浏览器的临时文件夹
-					response.addCookie(cookie);
-				}
 				return "Longin";
 
 			} else {
-				//使用cookie保存登录用户名
-				if ("keep".equals(isKeep)) {
-					Cookie cke = new Cookie("userName", user.getName());
-					cke.setMaxAge(3600 * 24 * 2 * 7);
-					response.addCookie(cke);
-				}
-
 				//使用cookie保存上次登录时间
 				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
 						"yyyy-MM-dd HH:mm:ss");
 				String date = simpleDateFormat.format(new Date());
-				//获取cookie
+				//获取cookie.只能全部获取，然后获取对应名称的cookie
 				Cookie[] cookieArray = request.getCookies();
 				boolean isExit = false;//是否存在名称为lastTime的cooKie
 				if (cookieArray != null) {

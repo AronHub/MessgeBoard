@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fjt.bussiness.RoleBiz;
+import com.fjt.dao.RoleRepos;
 import com.fjt.pojo.Role;
 import com.fjt.service.RoleService;
 import com.fjt.util.ReporUp;
@@ -20,15 +20,18 @@ import com.fjt.util.ReporUp;
 @Service
 public class RoleServiceImpl extends BaseSericeImpl implements RoleService {
 
+	/*	@Autowired
+		private RoleBiz roleBiz;*/
+
 	@Autowired
-	private RoleBiz roleBiz;
+	private RoleRepos reRoleRepos;
 
 	@Override
 	public Map<String, Object> findRoleInfo(Pageable pageable, String rolename,
 			String levl) {
 		// TODO Auto-generated method stub
 
-		Page<Role> page = roleBiz.findRoleInfo(pageable, rolename, levl);
+		Page<Role> page = reRoleRepos.findRoleInfo(pageable, rolename, levl);
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		List<Role> roles = this.serchAll();
@@ -41,34 +44,34 @@ public class RoleServiceImpl extends BaseSericeImpl implements RoleService {
 	@Override
 	public List<Role> serchAll() {
 		// TODO Auto-generated method stub
-		return roleBiz.serchAll();
+		return (List<Role>) reRoleRepos.findAll();
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void add(Role role) {
 		// TODO Auto-generated method stub
-		roleBiz.add(role);
+		reRoleRepos.save(role);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void deltRole(int id) {
 		// TODO Auto-generated method stub
-		roleBiz.deltRole(id);
+		reRoleRepos.deltRole(id);
 	}
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void deletAll() {
 		// TODO Auto-generated method stub
-		roleBiz.deletAll();
+		reRoleRepos.deltAll();
 	}
 
 	@Override
 	public Role getRoleByID(int id) {
 		// TODO Auto-generated method stub
-		return roleBiz.getRoleByID(id);
+		return reRoleRepos.getRoleByID(id);
 	}
 
 	@Override
@@ -80,7 +83,7 @@ public class RoleServiceImpl extends BaseSericeImpl implements RoleService {
 		if (roles != null) {
 			result += "上传成功";
 			for (Role role : roles) {
-				roleBiz.add(role);
+				reRoleRepos.save(role);
 			}
 		} else {
 			result += "上传失败";
@@ -92,7 +95,7 @@ public class RoleServiceImpl extends BaseSericeImpl implements RoleService {
 	@Override
 	public Role serch(int id) {
 		// TODO Auto-generated method stub
-		return roleBiz.serch(id);
+		return reRoleRepos.serch(id);
 	}
 
 	/* (非 Javadoc)
@@ -107,7 +110,7 @@ public class RoleServiceImpl extends BaseSericeImpl implements RoleService {
 	@Override
 	public List<Role> getRoleByNameAndLevl(String rolename, String levl) {
 		// TODO Auto-generated method stub
-		return roleBiz.getRoleByNameAndLevl(rolename, levl);
+		return reRoleRepos.getRoleByNameAndLevl(rolename, levl);
 	}
 
 }

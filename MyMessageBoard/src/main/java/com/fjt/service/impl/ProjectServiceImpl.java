@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fjt.bussiness.ProjctBiz;
+import com.fjt.dao.ProjRrep;
 import com.fjt.pojo.Project;
 import com.fjt.service.ProjectService;
 import com.fjt.util.ProjectRrepUP;
@@ -18,9 +18,8 @@ import com.fjt.util.ProjectRrepUP;
 @Service
 public class ProjectServiceImpl extends BaseSericeImpl
 		implements ProjectService {
-
 	@Autowired
-	private ProjctBiz projctBiz;
+	private ProjRrep projRrep;
 
 	@Override
 	public void reportUp(MultipartFile file) {
@@ -29,7 +28,7 @@ public class ProjectServiceImpl extends BaseSericeImpl
 		List<Project> lists = projectRrepUp.check(file);
 		if (lists != null) {
 			for (Project project : lists) {
-				projctBiz.add(project);
+				projRrep.save(project);
 			}
 		}
 
@@ -44,7 +43,7 @@ public class ProjectServiceImpl extends BaseSericeImpl
 		}
 
 		Map<String, Object> resultMap = new HashMap<String, Object>();
-		Page<Project> page = projctBiz.serch(pageble, map);
+		Page<Project> page = projRrep.serch(pageble, map);
 		if (page != null) {
 			List<Project> list = page.getContent();
 			int pageSize = page.getTotalPages();
@@ -71,7 +70,8 @@ public class ProjectServiceImpl extends BaseSericeImpl
 	public List<Project> getProjectByNameAndID(String projectName,
 			String projectId) {
 		// TODO Auto-generated method stub
-		return projctBiz.getProjectByNameAndID(projectName, projectId);
+		Integer ID = Integer.valueOf(projectId);
+		return projRrep.getProjectByNameAndID(projectName, ID);
 	}
 
 }

@@ -10,11 +10,14 @@
 <%
 String  userName="";
 Cookie[] cookieArray = request.getCookies();
-for (Cookie ck : cookieArray) {
-	if ("userName".equals(ck.getName())) {
-		userName=ck.getValue();
+if(cookieArray!=null){
+	for (Cookie ck : cookieArray) {
+		if ("userName".equals(ck.getName())) {
+			userName=ck.getValue();
+		}
 	}
 }
+
 %>
 <form action="logMain" method="POST">
  用户名：<input type="text" name="user" value="<%=userName %>"> 

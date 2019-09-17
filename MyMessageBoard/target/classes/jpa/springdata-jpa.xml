@@ -58,7 +58,7 @@
     
    
      <!-- Spring Data Jpa配置 -->  
-   <jpa:repositories base-package="com.fjt.repositery"  
+   <jpa:repositories base-package="com.fjt.dao"  
        repository-impl-postfix="Impl"
        transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>  
     

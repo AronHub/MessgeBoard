@@ -85,7 +85,6 @@ public class UserSeviceImpl extends BaseSericeImpl implements UserService {
 
 	@Override
 	public void delet(int id) {
-		// TODO Auto-generated method stub
 		userRepos.delete(id);
 	}
 
